@@ -30,7 +30,8 @@ def run_command(cmd, cwd=None, check=True):
     """Вспомогательная функция для запуска терминальных команд."""
     res = subprocess.run(cmd, cwd=cwd, text=True, capture_output=True)
     if check and res.returncode != 0:
-        raise RuntimeError(f"Ошибка выполнения {cmd}:\n{res.stderr.strip()}")
+        error_output = res.stderr.strip() or res.stdout.strip()
+        raise RuntimeError(f"Ошибка выполнения {cmd}:\n{error_output}")
     return res.stdout.strip()
 
 
@@ -111,7 +112,7 @@ def scan_and_add():
             
             # Добавляем в базу репозитория через repo-add
             db_path = TARGET_DIR / DB_FILE_NAME
-            run_command(["repo-add", "-f", str(db_path), str(pkg_file)], cwd=TARGET_DIR)
+            run_command(["repo-add", str(db_path), str(pkg_file)], cwd=TARGET_DIR)
 
             # Обновляем запись в JSON
             db_packages[pkg_name] = {
