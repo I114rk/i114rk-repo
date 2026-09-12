@@ -5,5 +5,12 @@
     "filename": "qtiv-0.1.2-1-x86_64.pkg.tar.zst",
     "size_bytes": 248105,
     "updated_at": "2026-09-12T10:59:39.145909"
+  },
+  "qtvp": {
+    "name": "qtvp",
+    "version": "0.2.0-1",
+    "filename": "qtvp-0.2.0-1-x86_64.pkg.tar.zst",
+    "size_bytes": 97059,
+    "updated_at": "2026-09-12T14:12:23.578816"
   }
 }
